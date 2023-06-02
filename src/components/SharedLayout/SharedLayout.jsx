@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { LuSearch } from "react-icons/lu";
 import {
   Container,
   Header,
   HeaderInput,
-  HeaderButton,
+  SearchIcon,
   Search,
 } from "../SharedLayout/SharedLayout.styled";
 import AnimeLogo from "../../images/logo.svg";
+import Lupe from "../../images/lupe.svg";
+import Menu from "../../images/menu.svg";
 
 const SharedLayout = () => {
   return (
@@ -20,11 +20,11 @@ const SharedLayout = () => {
         </div>
         <Search>
           <HeaderInput type="text" placeholder="Пошук..." />
-          <HeaderButton>
-            <LuSearch width="16px" height="16px" color="#FFFFFF" />
-          </HeaderButton>
+          <SearchIcon>
+            <img src={Lupe} alt="Lupe" />
+          </SearchIcon>
         </Search>
-        <GiHamburgerMenu width="24px" height="24px" color="#FFFFFF" />
+        <img src={Menu} alt="Menu" />
       </Header>
       <Outlet />
     </Container>

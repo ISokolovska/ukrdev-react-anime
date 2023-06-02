@@ -1,0 +1,28 @@
+import styled from "styled-components";
+
+export const PopAnimeList = styled.ul`
+  max-width: 767px;
+  margin: 0 auto;
+  margin-top: 12px;
+  /* padding: 0 16px; */
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  & > h2 {
+    background-color: var(--title-bg-orange-cl);
+  }
+  & > button {
+    width: 50vw;
+  }
+  & > button > p {
+    margin-right: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+`;

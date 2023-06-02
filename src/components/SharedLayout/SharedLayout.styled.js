@@ -41,7 +41,7 @@ export const HeaderInput = styled.input`
   }
 `;
 
-export const HeaderButton = styled.button`
+export const SearchIcon = styled.div`
   position: absolute;
   top: 25%;
   right: 0;

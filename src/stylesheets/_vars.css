@@ -1,7 +1,8 @@
 :root {
-  /* --main-text-cl: #000000;
-  --secondary-text-cl: #bdbdbd;
-  --auth-bg-cl: #e7eaf2; */
+  --main-text-cl: #f5f5f5;
+  /* --secondary-text-cl: #bdbdbd; */
+  --title-bg-red-cl: #ff4040;
+  --title-bg-orange-cl: #ff8540;
   --main-bg-cl: #202020;
   --secondary-bg-cl: #8c8c8c;
   /*  --accent-active-cl: #4a56e2;
