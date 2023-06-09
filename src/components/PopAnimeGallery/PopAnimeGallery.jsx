@@ -1,13 +1,28 @@
-import { FiArrowRight } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { getTopAnime } from "../../services/Api";
 import PopAnimeCard from "../PopAnimeCard/PopAnimeCard";
-import { useState } from "react";
-import Loader from "../Loader/Loader";
-import { PopAnimeList, TitleWrapper } from "./PopAnimeGallery.styled";
 import Arrow from "../../images/arrow_or.svg";
+import { PopAnimeList, TitleWrapper } from "./PopAnimeGallery.styled";
 
 const PopAnimeGallery = () => {
+  const [topAnime, setTopAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(setIsLoading);
+
+  useEffect(() => {
+    const fetchAnime = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getTopAnime();
+        setTopAnime(() => data.data);
+      } catch (err) {
+        // Notiflix.Notify.failure(err.message);
+        console.log(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchAnime();
+  }, []);
 
   return (
     <>
@@ -18,27 +33,14 @@ const PopAnimeGallery = () => {
           <img src={Arrow} alt="Arrow" />
         </button>
       </TitleWrapper>
-      <PopAnimeList>
-        {isLoading === true && <Loader />}
-        <PopAnimeCard />
-      </PopAnimeList>
+      {topAnime && topAnime.length > 0 && (
+        <PopAnimeList>
+          {topAnime.map((anime) => (
+            <PopAnimeCard anime={anime} key={anime.mal_id} />
+          ))}
+        </PopAnimeList>
+      )}
     </>
-
-    /* {Animes && (
-        <div>
-          {Animes && Animes.length > 0 && (
-            <ul Animes={Animes}>
-              {Animes.map((Anime) => {
-                return (
-                  <PopAnimeCard
-                  // key={Anime.id}
-                  />
-                );
-              })}
-            </ul>
-          )}
-        </div>
-      )} */
   );
 };
 

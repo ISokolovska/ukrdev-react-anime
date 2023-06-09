@@ -1,22 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import File from "../../images/file.svg";
+import Star from "../../images/star.svg";
+import Trash from "../../images/trash.svg";
 import {
   PopMangaImage,
   PopMangaImageWrapper,
   PopMangaItem,
 } from "./PopMangaCard.styled";
-// import { ImageItem, ImageItemShow } from "./Styled";
-import Love from "../../images/love.jpg";
-import File from "../../images/file.svg";
-import Star from "../../images/star.svg";
-import Trash from "../../images/trash.svg";
 
-const PopMangaCard = (
-  {
-    //   image: { id, tags, webformatURL, largeImageURL },
-    //   toggleModal,
-  }
-) => {
+const PopMangaCard = ({ manga: { title, images, score, favorites } }) => {
   return (
     <PopMangaItem
     //   className="gallery-item"
@@ -26,19 +19,14 @@ const PopMangaCard = (
     >
       <PopMangaImageWrapper>
         <p>манґа</p>
-        <PopMangaImage
-          // src={webformatURL}
-          // alt={tags}
-          src={Love}
-          alt="manga"
-        />
+        <PopMangaImage src={images.jpg.image_url} alt={title} />
         <ul>
           <li>
-            <p>546</p>
+            <p>{favorites}</p>
             <img src={File} alt="File" />
           </li>
           <li>
-            <p>10/10</p>
+            <p>{score}</p>
             <img src={Star} alt="Star" />
           </li>
           <li>
@@ -48,7 +36,7 @@ const PopMangaCard = (
         </ul>
       </PopMangaImageWrapper>
 
-      <p>Назва взагалі може бути досить довг...</p>
+      <p>{title}</p>
     </PopMangaItem>
   );
 };
@@ -56,9 +44,14 @@ const PopMangaCard = (
 export default PopMangaCard;
 
 PopMangaCard.propTypes = {
-  //   image: PropTypes.shape({
-  //     id: PropTypes.number.isRequired,
-  //     webformatURL: PropTypes.string.isRequired,
-  //     largeImageURL: PropTypes.string.isRequired,
-  //   }).isRequired,
+  manga: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    favorites: PropTypes.number.isRequired,
+    images: PropTypes.shape({
+      jpg: PropTypes.shape({
+        image_url: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }),
 };

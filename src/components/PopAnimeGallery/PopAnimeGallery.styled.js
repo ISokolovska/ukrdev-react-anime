@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const PopAnimeList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px 14px;
   max-width: 767px;
   margin: 0 auto;
   margin-top: 12px;
-  /* padding: 0 16px; */
 `;
 
 export const TitleWrapper = styled.div`
