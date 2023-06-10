@@ -1,29 +1,10 @@
-import { useEffect, useState } from "react";
-import { getTopManga } from "../../services/Api";
+import { useGetTopMangaQuery } from "../../services/manga";
 import PopMangaCard from "../PopMangaCard/PopMangaCard";
 import Arrow from "../../images/arrow.svg";
 import { PopMangaList, TitleWrapper } from "./PopMangaGallery.styled";
 
 const PopMangaGallery = () => {
-  // const [mangaSearch, setMangaSearch] = useState([]);
-  const [topManga, setTopManga] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchManga = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getTopManga();
-        setTopManga(() => data.data);
-      } catch (err) {
-        // Notiflix.Notify.failure(err.message);
-        console.log(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchManga();
-  }, []);
+  const { data, error, isLoading } = useGetTopMangaQuery();
 
   return (
     <>
@@ -34,15 +15,35 @@ const PopMangaGallery = () => {
           <img src={Arrow} alt="Arrow" />
         </button>
       </TitleWrapper>
-      {topManga && topManga.length > 0 && (
+
+      {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <>Loading...</>
+      ) : data.data ? (
         <PopMangaList>
-          {topManga.map((manga) => (
+          {data.data.map((manga) => (
             <PopMangaCard manga={manga} key={manga.mal_id} />
           ))}
         </PopMangaList>
-      )}
+      ) : null}
     </>
   );
 };
 
 export default PopMangaGallery;
+
+{
+  /* <div className="App">
+  {error ? (
+    <>Oh no, there was an error</>
+  ) : isLoading ? (
+    <>Loading...</>
+  ) : data ? (
+    <>
+      <h3>{data.species.name}</h3>
+      <img src={data.sprites.front_shiny} alt={data.species.name} />
+    </>
+  ) : null}
+</div>; */
+}

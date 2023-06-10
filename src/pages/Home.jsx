@@ -1,9 +1,10 @@
+import React from "react";
 import { useState } from "react";
 import PopMangaGallery from "../components/PopMangaGallery/PopMangaGallery";
 import PopAnimeGallery from "../components/PopAnimeGallery/PopAnimeGallery";
 import Loader from "../components/Loader/Loader";
 
-export const Home = () => {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   console.log(setIsLoading);
 
@@ -15,3 +16,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

@@ -1,29 +1,10 @@
-import { useEffect, useState } from "react";
-import { getTopAnime } from "../../services/Api";
+import { useGetTopAnimeQuery } from "../../services/anime";
 import PopAnimeCard from "../PopAnimeCard/PopAnimeCard";
 import Arrow from "../../images/arrow_or.svg";
 import { PopAnimeList, TitleWrapper } from "./PopAnimeGallery.styled";
 
 const PopAnimeGallery = () => {
-  const [topAnime, setTopAnime] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchAnime = async () => {
-      setIsLoading(true);
-      try {
-        const data = await getTopAnime();
-        setTopAnime(() => data.data);
-      } catch (err) {
-        // Notiflix.Notify.failure(err.message);
-        console.log(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchAnime();
-  }, []);
-
+  const { data, error, isLoading } = useGetTopAnimeQuery();
   return (
     <>
       <TitleWrapper>
@@ -33,13 +14,25 @@ const PopAnimeGallery = () => {
           <img src={Arrow} alt="Arrow" />
         </button>
       </TitleWrapper>
-      {topAnime && topAnime.length > 0 && (
+      {/* {topAnime && topAnime.length > 0 && (
         <PopAnimeList>
           {topAnime.map((anime) => (
             <PopAnimeCard anime={anime} key={anime.mal_id} />
           ))}
         </PopAnimeList>
-      )}
+      )} */}
+
+      {error ? (
+        <>Oh no, there was an error</>
+      ) : isLoading ? (
+        <>Loading...</>
+      ) : data.data ? (
+        <PopAnimeList>
+          {data.data.map((anime) => (
+            <PopAnimeCard anime={anime} key={anime.mal_id} />
+          ))}
+        </PopAnimeList>
+      ) : null}
     </>
   );
 };
