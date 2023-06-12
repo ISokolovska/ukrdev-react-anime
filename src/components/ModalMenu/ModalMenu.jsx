@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+// import React, { useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import Random from "../../images/random.svg";
 import Tag from "../../images/tag.svg";
 import Faq from "../../images/faq.svg";
 import User from "../../images/user.svg";
-import { ModalWrapper, Overlay } from "./ModalMenu.styled";
+import { ModalWrapper, ModalBody } from "./ModalMenu.styled";
+import { useState } from "react";
 
-const ModalMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const ModalMenu = ({ isOpen, setIsOpen }) => {
+  // const [isOpen, setIsOpen] = useState(false);
 
   // const handleBackDropClick = (event) => {
   //   if (event.currentTarget === event.target) {
@@ -18,14 +20,14 @@ const ModalMenu = () => {
 
   return (
     <>
-      <Overlay
+      <ModalWrapper
       // onClick={handleBackDropClick}
       >
-        <ModalWrapper>
+        <ModalBody onClick={(e) => e.stopPropagation()}>
           <button
             type="button"
             onClick={() => {
-              setIsOpen(!isOpen);
+              setIsOpen(isOpen);
             }}
           >
             <AiOutlineCloseCircle />
@@ -33,23 +35,23 @@ const ModalMenu = () => {
           <ul>
             <li>
               <img src={Random} alt="Random" />
-              <p>Мені пощастить</p>
+              <a>Мені пощастить</a>
             </li>
             <li>
               <img src={Tag} alt="Tag" />
-              <p>Теги</p>
+              <a>Теги</a>
             </li>
             <li>
               <img src={Faq} alt="Faq" />
-              <p>FAQ</p>
+              <a>FAQ</a>
             </li>
             <li>
               <img src={User} alt="User" />
-              <p>Увійти / Зареєструватися</p>
+              <a>Увійти / Зареєструватися</a>
             </li>
           </ul>
-        </ModalWrapper>
-      </Overlay>
+        </ModalBody>
+      </ModalWrapper>
     </>
   );
 };

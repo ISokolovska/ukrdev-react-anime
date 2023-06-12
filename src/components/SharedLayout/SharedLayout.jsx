@@ -1,4 +1,4 @@
-import { Outlet, useSearchParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React, { useState } from "react";
 import {
   Container,
@@ -53,18 +53,16 @@ const SharedLayout = () => {
             <img src={Lupe} alt="Lupe" />
           </SearchIcon>
         </Search>
-
         <ButtonMenu
           type="button"
           onClick={() => {
             setIsOpen(!isOpen);
             document.body.style.overflow = "hidden";
-            // document.body.style.filter = "blur(4px)";
           }}
         >
           <img src={Menu} alt="Menu" />
         </ButtonMenu>
-        {isOpen && <ModalMenu />}
+        {isOpen && <ModalMenu setIsOpen={setIsOpen} />}
       </Header>
       <Outlet />
     </Container>
