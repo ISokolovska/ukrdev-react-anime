@@ -6,6 +6,7 @@ import Loader from "../components/Loader/Loader";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   console.log(setIsLoading);
 
   return (

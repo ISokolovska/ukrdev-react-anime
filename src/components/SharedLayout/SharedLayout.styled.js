@@ -57,3 +57,8 @@ export const SearchIcon = styled.div`
     vertical-align: middle;
   }
 `;
+
+export const ButtonMenu = styled.button`
+  width: 24px;
+  height: 24px;
+`;
