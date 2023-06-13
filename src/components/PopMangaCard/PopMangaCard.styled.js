@@ -6,12 +6,12 @@ export const PopMangaItem = styled.li`
   align-items: center;
   padding: 0px;
   gap: 11px;
-  width: 168px;
+  width: 172px;
   height: 285.6px;
 `;
 
 export const PopMangaImage = styled.img`
-  width: 168px;
+  width: 172px;
   height: 248.6px;
 `;
 
@@ -20,6 +20,7 @@ export const PopMangaImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   & > p {
     position: absolute;
     top: 0;
@@ -35,9 +36,11 @@ export const PopMangaImageWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     bottom: 0;
+
     & > li {
       display: flex;
       flex-direction: row;
+
       & > p {
         margin-top: 0;
         margin-right: 4px;

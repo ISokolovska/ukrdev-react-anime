@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-// import { Home } from "./pages/Home";
+
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import { Suspense } from "react";
-// import About from "path/to/pages/About";
-// import Products from "path/to/pages/Products";
-const Home = React.lazy(() => import("./pages/Home"));
+
+const Home = React.lazy(() => import("./pages/Home/Home"));
+const TopManga = React.lazy(() => import("./pages/TopManga/TopManga"));
 
 const App = () => {
   return (
@@ -13,8 +12,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
+          <Route path="topmanga" element={<TopManga />} />
           {/* <Route path="about" element={<About />}>
-          <Route path="mission" element={<Mission />} />
+        
           <Route path="team" element={<Team />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

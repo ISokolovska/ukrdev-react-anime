@@ -13,8 +13,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { mangaApi } from "../services/manga";
-import { animeApi } from "../services/anime";
+import { mangaApi } from "../redux/mangaSlice";
+import { animeApi } from "../redux/animeSlice";
 
 const middleware = [
   ...getDefaultMiddleware({

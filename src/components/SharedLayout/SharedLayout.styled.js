@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 767px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 16px;
 `;
 
 export const Header = styled.header`
@@ -12,7 +12,8 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 57px;
-  padding: 16px;
+  /* padding-top: 16px;
+  padding-bottom: 16px; */
   background-color: var(--main-bg-cl);
   & > img {
     width: "48px";

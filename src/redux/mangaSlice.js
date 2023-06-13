@@ -4,14 +4,24 @@ const BASE_URL = "https://api.jikan.moe/v4/";
 export const mangaApi = createApi({
   reducerPath: "mangaApi",
   baseQuery: fetchBaseQuery({ baseUrl: `${BASE_URL}` }),
+  tagTypes: ["manga"],
   endpoints: (builder) => ({
     getTopManga: builder.query({
-      query: () => `top/manga?page=1&filter=bypopularity&limit=4`,
+      query: (page = 1, limit = 4, filter = "bypopularity") =>
+        `top/manga?page=${page}&filter=${filter}&limit=${limit}`,
+      keepUnusedDataFor: 30,
+      providesTags: ["manga"],
+    }),
+    getMangaSearch: builder.query({
+      query: (page = 1, search) =>
+        `manga?page=${page}${search ? "&search=" + search : ""}`,
+      keepUnusedDataFor: 30,
+      providesTags: ["manga"],
     }),
   }),
 });
 
-export const { useGetTopMangaQuery } = mangaApi;
+export const { useGetTopMangaQuery, useGetMangaSearchQuery } = mangaApi;
 
 // import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // import { API_URL } from "../../services/apiUrl";

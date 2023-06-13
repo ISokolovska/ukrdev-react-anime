@@ -22,12 +22,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
 h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 17px;
-  width: 200px;
+  /* margin-right: 17px; */
+  width: 50%;
   height: 33px;
   background-color: var(--title-bg-red-cl);
   color: var(--main-text-cl);
@@ -46,7 +47,8 @@ ul {
 }
 img {
   display: block;
-  max-width: 100%;
+
+  /* max-width: 100%; */
   height: auto;
 }
 
@@ -59,7 +61,7 @@ button {
   align-items: center;
   padding: 0px;
   gap: 8px;
-  width: 140px;
+  /* width: 140px; */
   height: 10px;
   font-family: "Open Sans";
   font-style: normal;

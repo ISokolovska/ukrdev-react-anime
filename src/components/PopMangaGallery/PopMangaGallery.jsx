@@ -1,25 +1,18 @@
-import { useGetTopMangaQuery } from "../../services/manga";
+import { useGetTopMangaQuery } from "../../redux/mangaSlice";
 import PopMangaCard from "../PopMangaCard/PopMangaCard";
 import Arrow from "../../images/arrow.svg";
 import { PopMangaList, TitleWrapper } from "./PopMangaGallery.styled";
+import Loader from "../Loader/Loader";
 
 const PopMangaGallery = () => {
   const { data, error, isLoading } = useGetTopMangaQuery();
 
   return (
     <>
-      <TitleWrapper>
-        <h2>Популярна манґа</h2>
-        <button>
-          Переглянути все
-          <img src={Arrow} alt="Arrow" />
-        </button>
-      </TitleWrapper>
-
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <>Loading...</>
+        <Loader />
       ) : data.data ? (
         <PopMangaList>
           {data.data.map((manga) => (

@@ -6,12 +6,12 @@ export const PopAnimeItem = styled.li`
   align-items: center;
   padding: 0px;
   gap: 11px;
-  width: 168px;
+  width: 172px;
   height: 285.6px;
 `;
 
 export const PopAnimeImage = styled.img`
-  width: 168px;
+  width: 172px;
   height: 248.6px;
 `;
 
@@ -20,6 +20,7 @@ export const PopAnimeImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   & > p {
     position: absolute;
     top: 0;

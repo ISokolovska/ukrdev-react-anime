@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import React, { useState } from "react";
 import {
   Container,
@@ -12,22 +12,38 @@ import AnimeLogo from "../../images/logo.svg";
 import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
+import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
+import usePagination from "../../hooks/usePagination";
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [search, setSearch] = useSearchParams();
-  // const [input, setInput] = useState(() => search.get("query") ?? "");
+  // const [mangaList, setMangaList] = useState([]);
+  // const [animeList, setAnimeList] = useState([]);
+  // const [search, setSearch] = useState("");
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const [input, setInput] = useState(() => searchParams.get("query") ?? "");
+  const params = useLocation();
+  let search = params.search.split("=").at(-1);
+  const { page, setPage, setTotalCount, countPage, perPage } = usePagination();
+
+  const { data, isLoading } = useGetMangaSearchQuery({
+    // page,
+    // limit: perPage,
+    search,
+    // category,
+  });
+  console.log("useGetMangaSearchQuery", useGetMangaSearchQuery());
 
   // const handleChange = (e) => {
   //   setInput(e.target.value);
   // };
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   console.log(search);
-  //   setSearch({ query: input.trim() });
-  //   reset();
-  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // console.log(search);
+    // setSearchParams({ query: input.trim() });
+    // reset();
+  };
 
   // const reset = () => {
   //   setInput("");
@@ -40,13 +56,16 @@ const SharedLayout = () => {
           <img src={AnimeLogo} alt="Anime Logo" />
         </div>
         <Search
-        // action="submit"
-        // nSubmit={handleSearch}
+          action="submit"
+          handleSearch={handleSearch}
+          // search={search}
+          // animeList={animeList}
+          // mangaList={mangaList}
         >
           <HeaderInput
             type="text"
             placeholder="Пошук..."
-            // value={search}
+            // value={input}
             // onChange={handleChange}
           />
           <SearchIcon>
