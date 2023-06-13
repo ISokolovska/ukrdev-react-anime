@@ -4,14 +4,15 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 767px;
   margin: 0 auto;
-  padding: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 57px;
+  /* height: 57px; */
   /* padding-top: 16px;
   padding-bottom: 16px; */
   background-color: var(--main-bg-cl);
@@ -44,7 +45,7 @@ export const HeaderInput = styled.input`
 
 export const SearchIcon = styled.div`
   position: absolute;
-  top: 25%;
+  top: 18%;
   right: 0;
   margin: 0;
   width: "16px";

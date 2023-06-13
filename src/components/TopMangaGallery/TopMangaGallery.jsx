@@ -1,11 +1,12 @@
 import { useGetTopMangaQuery } from "../../redux/mangaSlice";
-import PopMangaCard from "../PopMangaCard/PopMangaCard";
+import TopMangaCard from "../TopMangaCard/TopMangaCard";
 import Arrow from "../../images/arrow.svg";
-import { PopMangaList, TitleWrapper } from "./PopMangaGallery.styled";
+import { TopMangaList, TitleWrapper } from "./TopMangaGallery.styled";
 import Loader from "../Loader/Loader";
 
-const PopMangaGallery = () => {
+const TopMangaGallery = () => {
   const { data, error, isLoading } = useGetTopMangaQuery();
+  // console.log(data.data);
 
   return (
     <>
@@ -14,17 +15,17 @@ const PopMangaGallery = () => {
       ) : isLoading ? (
         <Loader />
       ) : data.data ? (
-        <PopMangaList>
+        <TopMangaList>
           {data.data.map((manga) => (
-            <PopMangaCard manga={manga} key={manga.mal_id} />
+            <TopMangaCard manga={manga} key={manga.mal_id} />
           ))}
-        </PopMangaList>
+        </TopMangaList>
       ) : null}
     </>
   );
 };
 
-export default PopMangaGallery;
+export default TopMangaGallery;
 
 {
   /* <div className="App">

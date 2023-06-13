@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PopAnimeItem = styled.li`
+export const TopAnimeItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,12 +10,12 @@ export const PopAnimeItem = styled.li`
   height: 285.6px;
 `;
 
-export const PopAnimeImage = styled.img`
+export const TopAnimeImage = styled.img`
   width: 172px;
   height: 248.6px;
 `;
 
-export const PopAnimeImageWrapper = styled.div`
+export const TopAnimeImageWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;

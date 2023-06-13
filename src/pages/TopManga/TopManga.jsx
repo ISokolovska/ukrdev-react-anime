@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useState } from "react";
-import PopMangaGallery from "../../components/PopMangaGallery/PopMangaGallery";
+import TopMangaGallery from "../../components/TopMangaGallery/TopMangaGallery";
+import { Link, useLocation } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 // import Loader from "../components/Loader/Loader";
 
 const TopManga = () => {
-  //   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
   // const [isOpen, setIsOpen] = useState(false);
   //   console.log(setIsLoading);
 
   return (
-    <main>
-      {/* {isLoading === true && <Loader />} */}
-      <PopMangaGallery />
-    </main>
+    <Link to="/topmanga" state={{ from: location }}>
+      <main>
+        {isLoading === true && <Loader />}
+        <TopMangaGallery />
+      </main>
+    </Link>
   );
 };
 

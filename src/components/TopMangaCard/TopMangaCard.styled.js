@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const PopMangaItem = styled.li`
+export const TopMangaItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,12 +10,12 @@ export const PopMangaItem = styled.li`
   height: 285.6px;
 `;
 
-export const PopMangaImage = styled.img`
+export const TopMangaImage = styled.img`
   width: 172px;
   height: 248.6px;
 `;
 
-export const PopMangaImageWrapper = styled.div`
+export const TopMangaImageWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;

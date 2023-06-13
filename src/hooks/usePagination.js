@@ -3,7 +3,7 @@ import { useState } from "react";
 const usePagination = () => {
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState();
-  const [perPage, setPerPage] = useState(12);
+  const [perPage, setPerPage] = useState(8);
 
   const countPage = Math.ceil(totalCount / perPage);
 

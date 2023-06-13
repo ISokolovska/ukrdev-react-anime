@@ -28,7 +28,7 @@ h2 {
   justify-content: center;
   align-items: center;
   /* margin-right: 17px; */
-  width: 50%;
+  width: 200px;
   height: 33px;
   background-color: var(--title-bg-red-cl);
   color: var(--main-text-cl);

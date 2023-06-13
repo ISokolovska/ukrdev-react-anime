@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useSearchParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 import React, { useState } from "react";
 import {
   Container,
@@ -22,6 +22,8 @@ const SharedLayout = () => {
   // const [search, setSearch] = useState("");
   // const [searchParams, setSearchParams] = useSearchParams();
   // const [input, setInput] = useState(() => searchParams.get("query") ?? "");
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
   const params = useLocation();
   let search = params.search.split("=").at(-1);
   const { page, setPage, setTotalCount, countPage, perPage } = usePagination();
@@ -52,9 +54,9 @@ const SharedLayout = () => {
   return (
     <Container>
       <Header>
-        <div>
+        <Link to={backLinkHref}>
           <img src={AnimeLogo} alt="Anime Logo" />
-        </div>
+        </Link>
         <Search
           action="submit"
           handleSearch={handleSearch}

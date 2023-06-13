@@ -4,22 +4,22 @@ import File from "../../images/file.svg";
 import Star from "../../images/star.svg";
 import Trash from "../../images/trash.svg";
 import {
-  PopAnimeImage,
-  PopAnimeImageWrapper,
-  PopAnimeItem,
-} from "./PopAnimeCard.styled";
+  TopMangaImage,
+  TopMangaImageWrapper,
+  TopMangaItem,
+} from "./TopMangaCard.styled";
 
-const PopAnimeCard = ({ anime: { title, images, score, favorites } }) => {
+const TopMangaCard = ({ manga: { title, images, score, favorites } }) => {
   return (
-    <PopAnimeItem
+    <TopMangaItem
     //   className="gallery-item"
     //   onClick={() => {
     //     toggleModal({ tags, largeImageURL });
     //   }}
     >
-      <PopAnimeImageWrapper>
-        <p>аніме</p>
-        <PopAnimeImage src={images.jpg.image_url} alt={title} />
+      <TopMangaImageWrapper>
+        <p>манґа</p>
+        <TopMangaImage src={images.jpg.image_url} alt={title} />
         <ul>
           <li>
             <p>{favorites}</p>
@@ -34,17 +34,17 @@ const PopAnimeCard = ({ anime: { title, images, score, favorites } }) => {
             <img src={Trash} alt="Trash" />
           </li>
         </ul>
-      </PopAnimeImageWrapper>
+      </TopMangaImageWrapper>
 
       <p>{title}</p>
-    </PopAnimeItem>
+    </TopMangaItem>
   );
 };
 
-export default PopAnimeCard;
+export default TopMangaCard;
 
-PopAnimeCard.propTypes = {
-  anime: PropTypes.shape({
+TopMangaCard.propTypes = {
+  manga: PropTypes.shape({
     title: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     favorites: PropTypes.number.isRequired,

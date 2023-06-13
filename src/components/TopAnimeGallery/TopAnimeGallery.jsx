@@ -1,9 +1,9 @@
 import { useGetTopAnimeQuery } from "../../redux/animeSlice";
-import PopAnimeCard from "../PopAnimeCard/PopAnimeCard";
-import { PopAnimeList } from "./PopAnimeGallery.styled";
+import TopAnimeCard from "../TopAnimeCard/TopAnimeCard";
+import { TopAnimeList } from "./TopAnimeGallery.styled";
 import Loader from "../Loader/Loader";
 
-const PopAnimeGallery = () => {
+const TopAnimeGallery = () => {
   const { data, error, isLoading } = useGetTopAnimeQuery();
   return (
     <>
@@ -12,14 +12,14 @@ const PopAnimeGallery = () => {
       ) : isLoading ? (
         <Loader />
       ) : data.data ? (
-        <PopAnimeList>
+        <TopAnimeList>
           {data.data.map((anime) => (
-            <PopAnimeCard anime={anime} key={anime.mal_id} />
+            <TopAnimeCard anime={anime} key={anime.mal_id} />
           ))}
-        </PopAnimeList>
+        </TopAnimeList>
       ) : null}
     </>
   );
 };
 
-export default PopAnimeGallery;
+export default TopAnimeGallery;
