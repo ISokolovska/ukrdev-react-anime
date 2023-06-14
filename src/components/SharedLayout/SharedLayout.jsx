@@ -1,5 +1,11 @@
-import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
-import React, { useState } from "react";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Header,
@@ -12,38 +18,23 @@ import AnimeLogo from "../../images/logo.svg";
 import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
-import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
-import usePagination from "../../hooks/usePagination";
 
-const SharedLayout = () => {
+const SharedLayout = ({ handleSearch, search, setSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [mangaList, setMangaList] = useState([]);
-  // const [animeList, setAnimeList] = useState([]);
-  // const [search, setSearch] = useState("");
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const [input, setInput] = useState(() => searchParams.get("query") ?? "");
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-  const params = useLocation();
-  let search = params.search.split("=").at(-1);
-  const { page, setPage, setTotalCount, countPage, perPage } = usePagination();
 
-  const { data, isLoading } = useGetMangaSearchQuery({
-    // page,
-    // limit: perPage,
-    search,
-    // category,
-  });
-  console.log("useGetMangaSearchQuery", useGetMangaSearchQuery());
+  // const backLinkHrefSearch = location.state?.from ?? "/search";
+  // const params = useLocation();
+  // let search = decodeURI(params.search).split("=").at(-1);
 
-  // const handleChange = (e) => {
-  //   setInput(e.target.value);
-  // };
-
-  const handleSearch = (e) => {
+  const onInputChange = (e) => {
     e.preventDefault();
-    // console.log(search);
-    // setSearchParams({ query: input.trim() });
+    const { value } = e.target;
+    console.log({ value });
+    setSearchParams({ search: value });
     // reset();
   };
 
@@ -51,24 +42,25 @@ const SharedLayout = () => {
   //   setInput("");
   // };
 
+  // useEffect(() => {
+  //     if (searchParams) {
+  //       navigate("/search");
+  //     }
+  //   }, []);
+  // }
+
   return (
     <Container>
       <Header>
         <Link to={backLinkHref}>
           <img src={AnimeLogo} alt="Anime Logo" />
         </Link>
-        <Search
-          action="submit"
-          handleSearch={handleSearch}
-          // search={search}
-          // animeList={animeList}
-          // mangaList={mangaList}
-        >
+        <Search onSubmit={handleSearch}>
           <HeaderInput
             type="text"
             placeholder="Пошук..."
-            // value={input}
-            // onChange={handleChange}
+            value={search}
+            onChange={onInputChange}
           />
           <SearchIcon>
             <img src={Lupe} alt="Lupe" />

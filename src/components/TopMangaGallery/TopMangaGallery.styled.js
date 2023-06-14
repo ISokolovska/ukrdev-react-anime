@@ -9,4 +9,7 @@ export const TopMangaList = styled.ul`
   margin: 0 auto;
   margin-top: 12px;
   gap: 8px 14px;
+  /* @media screen and (min-width: 480px) {
+    gap: 25px;
+  } */
 `;

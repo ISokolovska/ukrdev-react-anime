@@ -8,11 +8,19 @@ export const TopMangaItem = styled.li`
   gap: 11px;
   width: 172px;
   height: 285.6px;
+  /* @media screen and (min-width: 480px) {
+    width: 40vw;
+    height: 300px;
+  } */
 `;
 
 export const TopMangaImage = styled.img`
   width: 172px;
   height: 248.6px;
+  /* @media screen and (min-width: 480px) {
+    width: 40vw;
+    height: 260px;
+  } */
 `;
 
 export const TopMangaImageWrapper = styled.div`

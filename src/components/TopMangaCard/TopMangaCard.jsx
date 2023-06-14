@@ -11,12 +11,7 @@ import {
 
 const TopMangaCard = ({ manga: { title, images, score, favorites } }) => {
   return (
-    <TopMangaItem
-    //   className="gallery-item"
-    //   onClick={() => {
-    //     toggleModal({ tags, largeImageURL });
-    //   }}
-    >
+    <TopMangaItem>
       <TopMangaImageWrapper>
         <p>манґа</p>
         <TopMangaImage src={images.jpg.image_url} alt={title} />

@@ -6,11 +6,9 @@ const TopAnime = () => {
   const location = useLocation();
   return (
     <Link to="/topanime" state={{ from: location }}>
-      <main>
-        {/* {isLoading === true && <Loader />} */}
+      {/* {isLoading === true && <Loader />} */}
 
-        <TopAnimeGallery />
-      </main>
+      <TopAnimeGallery />
     </Link>
   );
 };
