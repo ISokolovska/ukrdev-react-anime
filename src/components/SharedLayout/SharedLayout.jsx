@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDebounce } from "usehooks-ts";
 import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 import {
   Container,
@@ -13,28 +14,23 @@ import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
 
-const SharedLayout = ({ onSubmit }) => {
+const SharedLayout = ({ handleSearch }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [input, setInput] = useState("");
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
-
-  const params = useLocation();
-  let search = decodeURI(params.search).split("=").at(-1);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // const { value } = e.target;
-    console.log(search);
-    // setSearchParams({ search: value });
-    // reset();
-  };
+  const debouncedValue = useDebounce(input, 500);
+  const [, setSearchParams] = useSearchParams();
+  // const search = searchParams.get("search") || "";
+  // const params = useLocation();
+  // let search = decodeURI(params.search).split("=").at(-1);
 
   const onInputChange = (e) => {
     e.preventDefault();
     const { value } = e.target;
     console.log({ value });
-    setSearchParams({ search: value });
+    setInput(value);
+
     // reset();
   };
 
@@ -42,17 +38,21 @@ const SharedLayout = ({ onSubmit }) => {
   //   setInput("");
   // };
 
+  useEffect(() => {
+    setSearchParams({ search: debouncedValue });
+  }, [debouncedValue, setSearchParams]);
+
   return (
     <Container>
       <Header>
         <Link to={backLinkHref}>
           <img src={AnimeLogo} alt="Anime Logo" />
         </Link>
-        <Search handleSearch={handleSearch}>
+        <Search>
           <HeaderInput
             type="text"
             placeholder="Пошук..."
-            value={search}
+            value={input}
             onChange={onInputChange}
           />
           <SearchIcon>

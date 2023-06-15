@@ -10,12 +10,9 @@ import usePagination from "../../hooks/usePagination";
 const TopManga = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
-
-  // const { page, setPage, setTotalCount, countPage, perPage } = usePagination();
-  // const { data, error, isLoading } = useGetTopMangaQuery({
-  //   page,
-  //   limit: perPage,
-  // });
+  // const params = useLocation();
+  // let page = decodeURI(params.page);
+  // const { data, error, isLoading } = useGetTopMangaQuery({ page: 1, limit: 4 });
 
   // const { data, totalCount } = data || [];
 

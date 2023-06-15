@@ -7,14 +7,14 @@ export const mangaApi = createApi({
   tagTypes: ["manga"],
   endpoints: (builder) => ({
     getTopManga: builder.query({
-      query: (page = 1, limit = 4, filter = "bypopularity") =>
+      query: ({ page = 1, limit = 4, filter = "bypopularity" }) =>
         `top/manga?page=${page}&filter=${filter}&limit=${limit}`,
       keepUnusedDataFor: 30,
       providesTags: ["manga"],
     }),
     getMangaSearch: builder.query({
-      query: (page = 1, limit = 4, search) =>
-        `manga?page=${page}&limit=${limit}${search ? "&search=" + search : ""}`,
+      query: ({ page = 1, limit = 4, search }) =>
+        `manga?q=${search}&page=${page}&limit=${limit}`,
       keepUnusedDataFor: 30,
       providesTags: ["manga"],
     }),
