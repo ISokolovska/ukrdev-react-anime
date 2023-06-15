@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MangaSearch from "../../components/MangaSearch/MangaSearch";
 import AnimeSearch from "../../components/AnimeSearch/AnimeSearch";
 import { Link, useLocation } from "react-router-dom";

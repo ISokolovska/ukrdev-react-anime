@@ -1,11 +1,5 @@
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 import {
   Container,
   Header,
@@ -19,16 +13,22 @@ import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
 
-const SharedLayout = ({ handleSearch, search, setSearch }) => {
+const SharedLayout = ({ onSubmit }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
 
-  // const backLinkHrefSearch = location.state?.from ?? "/search";
-  // const params = useLocation();
-  // let search = decodeURI(params.search).split("=").at(-1);
+  const params = useLocation();
+  let search = decodeURI(params.search).split("=").at(-1);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // const { value } = e.target;
+    console.log(search);
+    // setSearchParams({ search: value });
+    // reset();
+  };
 
   const onInputChange = (e) => {
     e.preventDefault();
@@ -42,20 +42,13 @@ const SharedLayout = ({ handleSearch, search, setSearch }) => {
   //   setInput("");
   // };
 
-  // useEffect(() => {
-  //     if (searchParams) {
-  //       navigate("/search");
-  //     }
-  //   }, []);
-  // }
-
   return (
     <Container>
       <Header>
         <Link to={backLinkHref}>
           <img src={AnimeLogo} alt="Anime Logo" />
         </Link>
-        <Search onSubmit={handleSearch}>
+        <Search handleSearch={handleSearch}>
           <HeaderInput
             type="text"
             placeholder="Пошук..."

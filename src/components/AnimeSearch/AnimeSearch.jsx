@@ -1,9 +1,9 @@
 import { useGetAnimeSearchQuery } from "../../redux/animeSlice";
 import TopAnimeCard from "../TopAnimeCard/TopAnimeCard";
-// import { TopAnimeList } from "./TopAnimeGallery.styled";
 import Loader from "../Loader/Loader";
+import { TopAnimeList } from "../TopAnimeGallery/TopAnimeGallery.styled";
 
-const AnimeGallery = () => {
+const AnimeSearch = () => {
   const { data, error, isLoading } = useGetAnimeSearchQuery();
   return (
     <>
@@ -12,14 +12,14 @@ const AnimeGallery = () => {
       ) : isLoading ? (
         <Loader />
       ) : data.data ? (
-        <ul>
+        <TopAnimeList>
           {data.data.map((anime) => (
             <TopAnimeCard anime={anime} key={anime.mal_id} />
           ))}
-        </ul>
+        </TopAnimeList>
       ) : null}
     </>
   );
 };
 
-export default AnimeGallery;
+export default AnimeSearch;

@@ -1,16 +1,13 @@
+import React from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
+
 import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
 import TopMangaCard from "../TopMangaCard/TopMangaCard";
-
 import Loader from "../Loader/Loader";
-import { useLocation, useNavigate } from "react-router-dom";
-import usePagination from "../../hooks/usePagination";
-import { useEffect } from "react";
+import { TopMangaList } from "../TopMangaGallery/TopMangaGallery.styled";
 
-const MangaGallery = () => {
-  const params = useLocation();
-  let search = params.search.split("=").at(-1);
-  const { page } = usePagination();
-  const { data, error, isLoading } = useGetMangaSearchQuery({ page, search });
+const MangaSearch = () => {
+  const { data, error, isLoading } = useGetMangaSearchQuery();
 
   return (
     <>
@@ -19,14 +16,14 @@ const MangaGallery = () => {
       ) : isLoading ? (
         <Loader />
       ) : data.data ? (
-        <ul>
+        <TopMangaList>
           {data.data.map((manga) => (
             <TopMangaCard manga={manga} key={manga.mal_id} />
           ))}
-        </ul>
+        </TopMangaList>
       ) : null}
     </>
   );
 };
 
-export default MangaGallery;
+export default MangaSearch;

@@ -1,7 +1,8 @@
+import React from "react";
 import { useGetTopAnimeQuery } from "../../redux/animeSlice";
 import TopAnimeCard from "../TopAnimeCard/TopAnimeCard";
-import { TopAnimeList } from "./TopAnimeGallery.styled";
 import Loader from "../Loader/Loader";
+import { TopAnimeList } from "./TopAnimeGallery.styled";
 
 const TopAnimeGallery = () => {
   const { data, error, isLoading } = useGetTopAnimeQuery();

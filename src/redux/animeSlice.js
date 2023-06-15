@@ -13,8 +13,8 @@ export const animeApi = createApi({
       providesTags: ["anime"],
     }),
     getAnimeSearch: builder.query({
-      query: (page = 1, search) =>
-        `anime?page=${page}${search ? "&search=" + search : ""}`,
+      query: (page = 1, limit = 4, search) =>
+        `anime?page=${page}&limit=${limit}${search ? "&search=" + search : ""}`,
       keepUnusedDataFor: 30,
       providesTags: ["anime"],
     }),

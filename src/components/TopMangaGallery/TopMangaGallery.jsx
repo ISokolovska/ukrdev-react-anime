@@ -1,8 +1,8 @@
+import React from "react";
 import { useGetTopMangaQuery } from "../../redux/mangaSlice";
 import TopMangaCard from "../TopMangaCard/TopMangaCard";
-import Arrow from "../../images/arrow.svg";
-import { TopMangaList, TitleWrapper } from "./TopMangaGallery.styled";
 import Loader from "../Loader/Loader";
+import { TopMangaList } from "./TopMangaGallery.styled";
 
 const TopMangaGallery = () => {
   const { data, error, isLoading } = useGetTopMangaQuery();
