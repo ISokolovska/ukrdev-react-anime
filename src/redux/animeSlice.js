@@ -7,14 +7,14 @@ export const animeApi = createApi({
   tagTypes: ["anime"],
   endpoints: (builder) => ({
     getTopAnime: builder.query({
-      query: (page = 1, limit = 4, filter = "bypopularity") =>
+      query: ({ page = 1, limit = 4, filter = "bypopularity" }) =>
         `top/anime?page=${page}&filter=${filter}&limit=${limit}`,
       keepUnusedDataFor: 30,
       providesTags: ["anime"],
     }),
     getAnimeSearch: builder.query({
-      query: (page = 1, limit = 4, search) =>
-        `anime?page=${page}&limit=${limit}${search ? "&search=" + search : ""}`,
+      query: ({ page = 1, limit = 4, search }) =>
+        `anime?q=${search}page=${page}&limit=${limit}`,
       keepUnusedDataFor: 30,
       providesTags: ["anime"],
     }),

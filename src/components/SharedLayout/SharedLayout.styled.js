@@ -37,6 +37,7 @@ export const HeaderInput = styled.input`
   align-items: center;
   border: none;
   background-color: var(--main-bg-cl);
+  font-family: "Segoe UI", sans-serif;
   color: var(--secondary-bg-cl);
   &:focus {
     outline: none;

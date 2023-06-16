@@ -11,7 +11,7 @@ import {
 
 const TopMangaCard = ({ manga: { title, images, score, favorites } }) => {
   return (
-    <TopMangaItem>
+    <TopMangaItem className="font-segoe-ui">
       <TopMangaImageWrapper>
         <p>манґа</p>
         <TopMangaImage src={images.jpg.image_url} alt={title} />

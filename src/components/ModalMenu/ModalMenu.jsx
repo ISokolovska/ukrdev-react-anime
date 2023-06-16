@@ -19,7 +19,7 @@ const ModalMenu = ({ isOpen, setIsOpen }) => {
   // };
 
   return (
-    <>
+    <div className="font-segoe-ui">
       <ModalWrapper
       // onClick={handleBackDropClick}
       >
@@ -52,7 +52,7 @@ const ModalMenu = ({ isOpen, setIsOpen }) => {
           </ul>
         </ModalBody>
       </ModalWrapper>
-    </>
+    </div>
   );
 };
 

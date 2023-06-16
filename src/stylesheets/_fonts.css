@@ -1,15 +1,18 @@
 @font-face {
-  font-family: "Open Sans", sans-serif;
-  src: local("Open Sans"),
-    url(../../assets/fonts/Open_Sans/static/OpenSans-SemiBold.ttf) format("ttf");
-  font-weight: 600;
-  font-style: normal;
+  font-family: "Segoe UI", sans-serif;
+  src: local("Segoe UI"), url("../fonts/SegoeUI/SegoeUI.ttf") format("truetype");
+  font-weight: normal;
+  /* font-style: normal; */
 }
 
 @font-face {
-  font-family: "Open Sans", sans-serif;
-  src: local("Open Sans"),
-    url(../../assets/fonts/Open_Sans/static/OpenSans-Bold.ttf) format("ttf");
-  font-weight: 700;
-  font-style: normal;
+  font-family: "Segoe UI", sans-serif;
+  src: local("Segoe UI"),
+    url("../fonts/SegoeUI/SegoeUI_Bold.ttf") format("truetype");
+  font-weight: bold;
+  /* font-style: bold; */
+}
+
+.font-segoe-ui {
+  font-family: "Segoe UI", sans-serif;
 }

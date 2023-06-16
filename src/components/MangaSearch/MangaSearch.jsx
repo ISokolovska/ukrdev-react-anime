@@ -11,8 +11,6 @@ const MangaSearch = () => {
   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
-  // const params = useLocation();
-  // let search = decodeURI(params.search).split("=").at(-1);
 
   const { data, error, isLoading } = useGetMangaSearchQuery({
     page,
@@ -20,8 +18,9 @@ const MangaSearch = () => {
     search,
   });
 
+  console.log("data", data);
   return (
-    <>
+    <div className="font-segoe-ui">
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
@@ -33,7 +32,7 @@ const MangaSearch = () => {
           ))}
         </TopMangaList>
       ) : null}
-    </>
+    </div>
   );
 };
 

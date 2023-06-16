@@ -6,8 +6,8 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const TopManga = React.lazy(() => import("./pages/TopManga/TopManga"));
 const TopAnime = React.lazy(() => import("./pages/TopAnime/TopAnime"));
-const SearchResults = React.lazy(() =>
-  import("./pages/SearchResults/SearchResults")
+const MangaMoreInfo = React.lazy(() =>
+  import("./pages/MangaMoreInfo/MangaMoreInfo")
 );
 
 const App = () => {
@@ -16,9 +16,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="topmanga" element={<TopManga />} />
-          <Route path="topanime" element={<TopAnime />} />
-          <Route path="search" element={<SearchResults />} />
+          <Route path="top/manga" element={<TopManga />} />
+          <Route path="top/anime" element={<TopAnime />} />
+          <Route path="manga/moreinfo" element={<MangaMoreInfo />} />
           {/* <Route path="about" element={<About />}>
         
           <Route path="team" element={<Team />} />

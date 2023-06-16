@@ -7,11 +7,10 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 const TopMangaGallery = () => {
-  // console.log(data.data);
   const location = useLocation();
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(4);
-  // const { page, setPage, setTotalCount, countPage, perPage } = usePagination();
+
   const { data, error, isLoading } = useGetTopMangaQuery({
     page,
     limit: perPage,
@@ -22,25 +21,25 @@ const TopMangaGallery = () => {
     if (location.pathname === "/") {
       setPerPage(4);
     }
-    if (location.pathname === "/topmanga") {
+    if (location.pathname === "/top/manga") {
       setPerPage(8);
     }
   }, [location.pathname]);
 
   return (
-    <>
+    <div className="font-segoe-ui">
       {error ? (
-        <>Oh no, there was an error</>
+        <p style={{ color: "red" }}>Oh no, there was an error</p>
       ) : isLoading ? (
         <Loader />
-      ) : data.data ? (
+      ) : data.data.length > 0 ? (
         <TopMangaList>
           {data.data.map((manga) => (
             <TopMangaCard manga={manga} key={manga.mal_id} />
           ))}
         </TopMangaList>
       ) : null}
-    </>
+    </div>
   );
 };
 

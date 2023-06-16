@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 // import { useState } from "react";
-import { NavLink, useLocation, useSearchParams } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import TopMangaGallery from "../../components/TopMangaGallery/TopMangaGallery";
 import TopAnimeGallery from "../../components/TopAnimeGallery/TopAnimeGallery";
 // import SearchResults from "../../components/SearchResults/SearchResults";
@@ -14,24 +14,14 @@ import { StyledLink, TitleWrapper } from "../Home/Home.styled";
 const Home = () => {
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState("");
-  // console.log(setIsLoading);
+
   const params = useLocation();
   let search = params.search.split("=").at(-1);
-  console.log("search", search);
-  // const navigate = useNavigate();
+
   const location = useLocation().pathname.split("/");
-  const backLinkHref1 = location.state?.from ?? "/topmanga";
-  const backLinkHref2 = location.state?.from ?? "/topanime";
+  const backLinkHref1 = location.state?.from ?? "/top/manga";
+  const backLinkHref2 = location.state?.from ?? "/top/anime";
   const backLinkHref3 = location.state?.from ?? "/search";
-
-  // const [, setSearchParams] = useSearchParams();
-
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   const query = e.target[0].value;
-  //   // console.log("query", query);
-  //   setSearchParams(() => query);
-  // };
 
   return (
     <main>
@@ -57,25 +47,29 @@ const Home = () => {
         </>
       )}
 
-      {search && (
-        <>
-          <StyledLink
-            as={NavLink}
-            to={backLinkHref3}
-            style={{ justifyContent: "flex-start" }}
-          >
-            <p>Переглянути все</p>
-            <img src={ArrowRed} alt="ArrowRed" />
-          </StyledLink>
-          {/* <SearchResults /> */}
-          <MangaSearch
-          // handleSearch={handleSearch}
-          />
-          <AnimeSearch />
-        </>
-      )}
+      {
+        search && (
+          <>
+            <StyledLink
+              as={NavLink}
+              to={backLinkHref3}
+              style={{ justifyContent: "flex-start" }}
+            >
+              <p>Переглянути все</p>
+              <img src={ArrowRed} alt="ArrowRed" />
+            </StyledLink>
+            <MangaSearch />
+            <AnimeSearch />
+          </>
+        )
+        // (<p style={{ color: "red" }}>Нажаль ми нічого не знайшли </p>)
+      }
     </main>
   );
 };
 
 export default Home;
+
+// : data.data.length === 0 ? (
+//         <p>Нажаль ми нічого не знайшли !</p>
+//       )

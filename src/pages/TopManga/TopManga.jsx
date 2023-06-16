@@ -9,7 +9,7 @@ import usePagination from "../../hooks/usePagination";
 
 const TopManga = () => {
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   // const params = useLocation();
   // let page = decodeURI(params.page);
   // const { data, error, isLoading } = useGetTopMangaQuery({ page: 1, limit: 4 });
@@ -22,9 +22,9 @@ const TopManga = () => {
   // }, [totalCount]);
 
   return (
-    <Link to="/topmanga" state={{ from: location }}>
+    <Link to="/top/manga" state={{ from: location }}>
       <main>
-        {isLoading === true && <Loader />}
+        {/* {isLoading === true && <Loader />} */}
         <TopMangaGallery />
       </main>
     </Link>

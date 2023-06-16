@@ -14,36 +14,27 @@ import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
 
-const SharedLayout = ({ handleSearch }) => {
+const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
   const debouncedValue = useDebounce(input, 500);
   const [, setSearchParams] = useSearchParams();
-  // const search = searchParams.get("search") || "";
-  // const params = useLocation();
-  // let search = decodeURI(params.search).split("=").at(-1);
 
   const onInputChange = (e) => {
     e.preventDefault();
     const { value } = e.target;
-    console.log({ value });
+    // console.log({ value });
     setInput(value);
-
-    // reset();
   };
-
-  // const reset = () => {
-  //   setInput("");
-  // };
 
   useEffect(() => {
     setSearchParams({ search: debouncedValue });
   }, [debouncedValue, setSearchParams]);
 
   return (
-    <Container>
+    <Container className="font-segoe-ui">
       <Header>
         <Link to={backLinkHref}>
           <img src={AnimeLogo} alt="Anime Logo" />

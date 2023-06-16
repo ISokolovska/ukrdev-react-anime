@@ -11,12 +11,7 @@ import {
 
 const TopAnimeCard = ({ anime: { title, images, score, favorites } }) => {
   return (
-    <TopAnimeItem
-    //   className="gallery-item"
-    //   onClick={() => {
-    //     toggleModal({ tags, largeImageURL });
-    //   }}
-    >
+    <TopAnimeItem className="font-segoe-ui">
       <TopAnimeImageWrapper>
         <p>аніме</p>
         <TopAnimeImage src={images.jpg.image_url} alt={title} />

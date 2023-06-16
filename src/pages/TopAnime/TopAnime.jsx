@@ -5,7 +5,7 @@ import TopAnimeGallery from "../../components/TopAnimeGallery/TopAnimeGallery";
 const TopAnime = () => {
   const location = useLocation();
   return (
-    <Link to="/topanime" state={{ from: location }}>
+    <Link to="/top/anime" state={{ from: location }}>
       {/* {isLoading === true && <Loader />} */}
 
       <TopAnimeGallery />
