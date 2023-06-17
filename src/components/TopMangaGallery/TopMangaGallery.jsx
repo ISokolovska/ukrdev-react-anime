@@ -4,7 +4,7 @@ import TopMangaCard from "../TopMangaCard/TopMangaCard";
 import Loader from "../Loader/Loader";
 import { TopMangaList } from "./TopMangaGallery.styled";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const TopMangaGallery = () => {
   const location = useLocation();
@@ -35,7 +35,9 @@ const TopMangaGallery = () => {
       ) : data.data.length > 0 ? (
         <TopMangaList>
           {data.data.map((manga) => (
-            <TopMangaCard manga={manga} key={manga.mal_id} />
+            <Link to={`/manga/${manga.mal_id}`} state={{ from: location }}>
+              <TopMangaCard manga={manga} key={manga.mal_id} />
+            </Link>
           ))}
         </TopMangaList>
       ) : null}

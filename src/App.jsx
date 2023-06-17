@@ -18,7 +18,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="top/manga" element={<TopManga />} />
           <Route path="top/anime" element={<TopAnime />} />
-          <Route path="manga/moreinfo" element={<MangaMoreInfo />} />
+          <Route path="manga/:mal_id" element={<MangaMoreInfo />} />
           {/* <Route path="about" element={<About />}>
         
           <Route path="team" element={<Team />} />

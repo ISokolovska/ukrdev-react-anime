@@ -17,7 +17,6 @@ const Home = () => {
 
   const params = useLocation();
   let search = params.search.split("=").at(-1);
-
   const location = useLocation().pathname.split("/");
   const backLinkHref1 = location.state?.from ?? "/top/manga";
   const backLinkHref2 = location.state?.from ?? "/top/anime";

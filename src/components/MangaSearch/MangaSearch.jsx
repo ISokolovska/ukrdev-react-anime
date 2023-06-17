@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
-
+import { useSearchParams } from "react-router-dom";
 import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
 import TopMangaCard from "../TopMangaCard/TopMangaCard";
 import Loader from "../Loader/Loader";
 import { TopMangaList } from "../TopMangaGallery/TopMangaGallery.styled";
-import { useLocation, useSearchParams } from "react-router-dom";
 
 const MangaSearch = () => {
   const [page, setPage] = useState(1);

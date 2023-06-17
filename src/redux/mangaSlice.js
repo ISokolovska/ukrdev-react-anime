@@ -18,8 +18,8 @@ export const mangaApi = createApi({
       keepUnusedDataFor: 30,
       providesTags: ["manga"],
     }),
-    getMangaMoreInfo: builder.query({
-      query: ({ id }) => `manga/${id}/moreinfo`,
+    getMangaById: builder.query({
+      query: ({ mal_id }) => `manga/${mal_id}`,
       keepUnusedDataFor: 30,
       providesTags: ["manga"],
     }),
@@ -29,5 +29,5 @@ export const mangaApi = createApi({
 export const {
   useGetTopMangaQuery,
   useGetMangaSearchQuery,
-  useGetMangaMoreInfoQuery,
+  useGetMangaByIdQuery,
 } = mangaApi;
