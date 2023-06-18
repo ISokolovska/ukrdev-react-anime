@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TopMangaItem = styled.li`
+export const AnimeItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,22 +8,14 @@ export const TopMangaItem = styled.li`
   gap: 11px;
   width: 172px;
   height: 285.6px;
-  /* @media screen and (min-width: 480px) {
-    width: 40vw;
-    height: 300px;
-  } */
 `;
 
-export const TopMangaImage = styled.img`
+export const AnimeImage = styled.img`
   width: 172px;
   height: 248.6px;
-  /* @media screen and (min-width: 480px) {
-    width: 40vw;
-    height: 260px;
-  } */
 `;
 
-export const TopMangaImageWrapper = styled.div`
+export const AnimeImageWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
@@ -36,7 +28,7 @@ export const TopMangaImageWrapper = styled.div`
     margin: 0;
     width: 42px;
     height: 16px;
-    background-color: var(--title-bg-red-cl);
+    background-color: var(--title-bg-orange-cl);
   }
   & > ul {
     position: absolute;
@@ -44,13 +36,11 @@ export const TopMangaImageWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     bottom: 0;
-
     & > li {
       display: flex;
       flex-direction: row;
-
       & > p {
-        margin-top: 0;
+        margin-: 0;
         margin-right: 4px;
       }
       & > img {

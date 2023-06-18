@@ -18,7 +18,16 @@ export const animeApi = createApi({
       keepUnusedDataFor: 30,
       providesTags: ["anime"],
     }),
+    getAnimeById: builder.query({
+      query: (id) => `anime/${id}`,
+      keepUnusedDataFor: 30,
+      providesTags: ["anime"],
+    }),
   }),
 });
 
-export const { useGetTopAnimeQuery, useGetAnimeSearchQuery } = animeApi;
+export const {
+  useGetTopAnimeQuery,
+  useGetAnimeSearchQuery,
+  useGetAnimeByIdQuery,
+} = animeApi;

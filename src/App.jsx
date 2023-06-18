@@ -9,6 +9,9 @@ const TopAnime = React.lazy(() => import("./pages/TopAnime/TopAnime"));
 const MangaMoreInfo = React.lazy(() =>
   import("./pages/MangaMoreInfo/MangaMoreInfo")
 );
+const AnimeMoreInfo = React.lazy(() =>
+  import("./pages/AnimeMoreInfo/AnimeMoreInfo")
+);
 
 const App = () => {
   return (
@@ -19,6 +22,7 @@ const App = () => {
           <Route path="top/manga" element={<TopManga />} />
           <Route path="top/anime" element={<TopAnime />} />
           <Route path="manga/:mal_id" element={<MangaMoreInfo />} />
+          <Route path="anime/:mal_id" element={<AnimeMoreInfo />} />
           {/* <Route path="about" element={<About />}>
         
           <Route path="team" element={<Team />} />

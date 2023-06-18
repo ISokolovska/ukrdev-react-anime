@@ -19,7 +19,7 @@ export const mangaApi = createApi({
       providesTags: ["manga"],
     }),
     getMangaById: builder.query({
-      query: ({ mal_id }) => `manga/${mal_id}`,
+      query: (id) => `manga/${id}`,
       keepUnusedDataFor: 30,
       providesTags: ["manga"],
     }),

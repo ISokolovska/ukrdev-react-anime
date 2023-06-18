@@ -1,5 +1,5 @@
 import { useGetAnimeSearchQuery } from "../../redux/animeSlice";
-import TopAnimeCard from "../TopAnimeCard/TopAnimeCard";
+import AnimeCard from "../AnimeCard/AnimeCard";
 import Loader from "../Loader/Loader";
 import { TopAnimeList } from "../TopAnimeGallery/TopAnimeGallery.styled";
 import { useState } from "react";
@@ -10,24 +10,32 @@ const AnimeSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
 
-  const { data, error, isLoading } = useGetAnimeSearchQuery({
+  const {
+    data: getAnimeSearch,
+    error,
+    isLoading,
+  } = useGetAnimeSearchQuery({
     page,
     limit: 8,
     search,
   });
+
+  // if (error) {
+  //   return <>Oh no, there was an error</>;
+  // }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="font-segoe-ui">
-      {error ? (
-        <>Oh no, there was an error</>
-      ) : isLoading ? (
-        <Loader />
-      ) : data.data ? (
-        <TopAnimeList>
-          {data.data.map((anime) => (
-            <TopAnimeCard anime={anime} key={anime.mal_id} />
-          ))}
-        </TopAnimeList>
-      ) : null}
+      getAnimeSearch?.data?.length ? (
+      <TopAnimeList>
+        {getAnimeSearch.data.map((anime) => (
+          <AnimeCard anime={anime} key={anime.mal_id} />
+        ))}
+      </TopAnimeList>
     </div>
   );
 };

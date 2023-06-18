@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGetTopAnimeQuery } from "../../redux/animeSlice";
-import TopAnimeCard from "../TopAnimeCard/TopAnimeCard";
+import AnimeCard from "../AnimeCard/AnimeCard";
 import Loader from "../Loader/Loader";
 import { TopAnimeList } from "./TopAnimeGallery.styled";
 import { useLocation } from "react-router-dom";
@@ -10,7 +10,11 @@ const TopAnimeGallery = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(4);
 
-  const { data, error, isLoading } = useGetTopAnimeQuery({
+  const {
+    data: getTopAnime,
+    error,
+    isLoading,
+  } = useGetTopAnimeQuery({
     page,
     limit: perPage,
     // filter,
@@ -25,19 +29,23 @@ const TopAnimeGallery = () => {
     }
   }, [location.pathname]);
 
+  // if (error) {
+  //   return <>Oh no, there was an error</>;
+  // }
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="font-segoe-ui">
-      {error ? (
-        <>Oh no, there was an error</>
-      ) : isLoading ? (
-        <Loader />
-      ) : data.data ? (
-        <TopAnimeList>
-          {data.data.map((anime) => (
-            <TopAnimeCard anime={anime} key={anime.mal_id} />
-          ))}
-        </TopAnimeList>
-      ) : null}
+      getTopAnime?.data?.length ? (
+      <TopAnimeList>
+        {getTopAnime.data.map((anime) => (
+          <AnimeCard anime={anime} key={anime.mal_id} />
+        ))}
+      </TopAnimeList>
+      )
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import MangaInfo from "../../components/MangaInfo/MangaInfo";
+import AnimeInfo from "../../components/AnimeInfo/AnimeInfo";
 
-const MangaMoreInfo = () => {
+const AnimeMoreInfo = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? "/";
 
   return (
     <Link to={backLinkHref}>
-      <MangaInfo />
+      <AnimeInfo />
     </Link>
   );
 };
 
-export default MangaMoreInfo;
+export default AnimeMoreInfo;
