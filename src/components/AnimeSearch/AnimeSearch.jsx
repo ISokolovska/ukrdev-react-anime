@@ -1,7 +1,7 @@
 import { useGetAnimeSearchQuery } from "../../redux/animeSlice";
 import AnimeCard from "../AnimeCard/AnimeCard";
 import Loader from "../Loader/Loader";
-import { TopAnimeList } from "../TopAnimeGallery/TopAnimeGallery.styled";
+import { AnimeList } from "../TopAnimeGallery/TopAnimeGallery.styled";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -30,12 +30,11 @@ const AnimeSearch = () => {
 
   return (
     <div className="font-segoe-ui">
-      getAnimeSearch?.data?.length ? (
-      <TopAnimeList>
+      <AnimeList>
         {getAnimeSearch.data.map((anime) => (
           <AnimeCard anime={anime} key={anime.mal_id} />
         ))}
-      </TopAnimeList>
+      </AnimeList>
     </div>
   );
 };

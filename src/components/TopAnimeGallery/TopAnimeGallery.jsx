@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetTopAnimeQuery } from "../../redux/animeSlice";
 import AnimeCard from "../AnimeCard/AnimeCard";
 import Loader from "../Loader/Loader";
-import { TopAnimeList } from "./TopAnimeGallery.styled";
+import { AnimeList, TopAnimeGalleryContainer } from "./TopAnimeGallery.styled";
 import { useLocation } from "react-router-dom";
 
 const TopAnimeGallery = () => {
@@ -19,6 +19,7 @@ const TopAnimeGallery = () => {
     limit: perPage,
     // filter,
   });
+  // console.log(getTopAnime.data.lenth);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -38,15 +39,13 @@ const TopAnimeGallery = () => {
   }
 
   return (
-    <div className="font-segoe-ui">
-      getTopAnime?.data?.length ? (
-      <TopAnimeList>
+    <TopAnimeGalleryContainer className="font-segoe-ui">
+      <AnimeList>
         {getTopAnime.data.map((anime) => (
           <AnimeCard anime={anime} key={anime.mal_id} />
         ))}
-      </TopAnimeList>
-      )
-    </div>
+      </AnimeList>
+    </TopAnimeGalleryContainer>
   );
 };
 

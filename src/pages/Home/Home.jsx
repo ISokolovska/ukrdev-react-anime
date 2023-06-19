@@ -9,26 +9,30 @@ import AnimeSearch from "../../components/AnimeSearch/AnimeSearch";
 // import Loader from "../../components/Loader/Loader";
 import ArrowRed from "../../images/arrow.svg";
 import ArrowOrange from "../../images/arrow_or.svg";
-import { StyledLink, TitleWrapper } from "../Home/Home.styled";
+import { HomeContainer, StyledLink, TitleWrapper } from "../Home/Home.styled";
 
 const Home = () => {
   // const [isLoading, setIsLoading] = useState(false);
   // const [error, setError] = useState("");
-
+  // const [mangaList, setMangaList] = useState([]);
+  // console.log(mangaList);
   const params = useLocation();
   let search = params.search.split("=").at(-1);
+
   const location = useLocation().pathname.split("/");
   const backLinkHref1 = location.state?.from ?? "/top/manga";
   const backLinkHref2 = location.state?.from ?? "/top/anime";
   const backLinkHref3 = location.state?.from ?? "/search";
 
   return (
-    <main>
+    <HomeContainer>
       {/* {isLoading === true && <Loader />} */}
       {!search && (
         <>
           <TitleWrapper>
-            <h2>Популярна манґа</h2>
+            <div>
+              <h2>Популярна манґа</h2>
+            </div>
             <StyledLink as={NavLink} to={backLinkHref1}>
               <p>Переглянути все</p>
               <img src={ArrowRed} alt="ArrowRed" />
@@ -36,7 +40,10 @@ const Home = () => {
           </TitleWrapper>
           <TopMangaGallery />
           <TitleWrapper>
-            <h2 className="anime__title">Популярне аніме</h2>
+            <div className="anime__title">
+              <h2>Популярне аніме</h2>
+            </div>
+
             <StyledLink as={NavLink} to={backLinkHref2}>
               <p>Переглянути все</p>
               <img src={ArrowOrange} alt="ArrowOrange" />
@@ -63,7 +70,7 @@ const Home = () => {
         )
         // (<p style={{ color: "red" }}>Нажаль ми нічого не знайшли </p>)
       }
-    </main>
+    </HomeContainer>
   );
 };
 

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
 import MangaCard from "../MangaCard/MangaCard";
 import Loader from "../Loader/Loader";
-import { TopMangaList } from "../TopMangaGallery/TopMangaGallery.styled";
+import { MangaList } from "../TopMangaGallery/TopMangaGallery.styled";
 
 const MangaSearch = () => {
   const [page, setPage] = useState(1);
@@ -31,13 +31,11 @@ const MangaSearch = () => {
   // console.log("data", data);
   return (
     <div className="font-segoe-ui">
-      getMangaSearch?.data?.length ? (
-      <TopMangaList>
+      <MangaList>
         {getMangaSearch.data.map((manga) => (
           <MangaCard manga={manga} key={manga.mal_id} />
         ))}
-      </TopMangaList>
-      )
+      </MangaList>
     </div>
   );
 };

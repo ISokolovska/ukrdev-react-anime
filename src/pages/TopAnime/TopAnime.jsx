@@ -7,7 +7,6 @@ const TopAnime = () => {
   return (
     <Link to="/top/anime" state={{ from: location }}>
       {/* {isLoading === true && <Loader />} */}
-
       <TopAnimeGallery />
     </Link>
   );

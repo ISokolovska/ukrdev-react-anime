@@ -24,16 +24,11 @@ code {
 } */
 
 h2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 33px;
-  background-color: var(--title-bg-red-cl);
   color: var(--main-text-cl);
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
+  text-align: center;
 }
 a {
   color: inherit;
@@ -67,9 +62,9 @@ button {
 }
 
 p {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   font-weight: 600;
   font-size: 12px;
   line-height: 1.5;

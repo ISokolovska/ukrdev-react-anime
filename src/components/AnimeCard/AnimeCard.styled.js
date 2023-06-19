@@ -5,9 +5,12 @@ export const AnimeItem = styled.li`
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 11px;
+  gap: 8px;
   width: 172px;
-  height: 285.6px;
+  height: 295px;
+  & > p {
+    text-align: center;
+  }
 `;
 
 export const AnimeImage = styled.img`
@@ -35,12 +38,16 @@ export const AnimeImageWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
     & > li {
       display: flex;
       flex-direction: row;
       & > p {
-        margin-: 0;
+        margin-top: 0;
         margin-right: 4px;
       }
       & > img {

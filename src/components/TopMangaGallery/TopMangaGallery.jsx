@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useGetTopMangaQuery } from "../../redux/mangaSlice";
-import MangaCard from "../MangaCard/MangaCard";
 import Loader from "../Loader/Loader";
-import { TopMangaList } from "./TopMangaGallery.styled";
-import { useState } from "react";
+import MangaCard from "../MangaCard/MangaCard";
+import { MangaList, TopMangaGalleryContainer } from "./TopMangaGallery.styled";
 
 const TopMangaGallery = () => {
   const location = useLocation();
@@ -39,15 +38,13 @@ const TopMangaGallery = () => {
   }
 
   return (
-    <div className="font-segoe-ui">
-      getTopManga?.data?.length ? (
-      <TopMangaList>
+    <TopMangaGalleryContainer className="font-segoe-ui">
+      <MangaList>
         {getTopManga.data.map((manga) => (
           <MangaCard manga={manga} key={manga.mal_id} />
         ))}
-      </TopMangaList>
-      )
-    </div>
+      </MangaList>
+    </TopMangaGalleryContainer>
   );
 };
 

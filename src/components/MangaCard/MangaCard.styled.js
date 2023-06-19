@@ -5,9 +5,12 @@ export const MangaItem = styled.li`
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 11px;
+  gap: 8px;
   width: 172px;
-  height: 285.6px;
+  height: 295px;
+  & > p {
+    text-align: center;
+  }
   /* @media screen and (min-width: 480px) {
     width: 40vw;
     height: 300px;
@@ -39,18 +42,21 @@ export const MangaImageWrapper = styled.div`
     background-color: var(--title-bg-red-cl);
   }
   & > ul {
-    position: absolute;
     display: flex;
+    position: absolute;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 
     & > li {
       display: flex;
       flex-direction: row;
 
       & > p {
-        margin-: 0;
+        margin-top: 0;
         margin-right: 4px;
       }
       & > img {
