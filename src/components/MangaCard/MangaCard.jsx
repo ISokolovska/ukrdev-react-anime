@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import File from "../../images/file.svg";
 import Star from "../../images/star.svg";
@@ -10,7 +10,7 @@ const MangaCard = ({ manga: { title, images, score, favorites, mal_id } }) => {
   const location = useLocation();
   return (
     <MangaItem className="font-segoe-ui">
-      <Link to={`/manga/${mal_id}`} state={{ from: location }}>
+      <Link as={NavLink} to={`/manga/${mal_id}`} state={{ from: location }}>
         <MangaImageWrapper>
           <p>манґа</p>
           <MangaImage src={images.jpg.image_url} alt={title} />
@@ -30,7 +30,6 @@ const MangaCard = ({ manga: { title, images, score, favorites, mal_id } }) => {
           </ul>
         </MangaImageWrapper>
       </Link>
-
       <p>{title}</p>
     </MangaItem>
   );
@@ -41,7 +40,7 @@ export default MangaCard;
 MangaCard.propTypes = {
   manga: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequired,
+    score: PropTypes.number,
     favorites: PropTypes.number.isRequired,
     images: PropTypes.shape({
       jpg: PropTypes.shape({

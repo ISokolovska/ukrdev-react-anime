@@ -4,13 +4,13 @@ import File from "../../images/file.svg";
 import Star from "../../images/star.svg";
 import Trash from "../../images/trash.svg";
 import { AnimeImage, AnimeImageWrapper, AnimeItem } from "./AnimeCard.styled";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const AnimeCard = ({ anime: { title, images, score, favorites, mal_id } }) => {
   const location = useLocation();
   return (
     <AnimeItem className="font-segoe-ui">
-      <Link to={`/anime/${mal_id}`} state={{ from: location }}>
+      <Link as={NavLink} to={`/anime/${mal_id}`} state={{ from: location }}>
         <AnimeImageWrapper>
           <p>аніме</p>
           <AnimeImage src={images.jpg.image_url} alt={title} />

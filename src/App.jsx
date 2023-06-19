@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import SharedLayout from "./components/SharedLayout/SharedLayout";
+import Loader from "./components/Loader/Loader";
 
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const TopManga = React.lazy(() => import("./pages/TopManga/TopManga"));
@@ -15,7 +16,7 @@ const AnimeMoreInfo = React.lazy(() =>
 
 const App = () => {
   return (
-    <Suspense fallback={false}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />

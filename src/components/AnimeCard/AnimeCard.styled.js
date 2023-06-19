@@ -32,6 +32,7 @@ export const AnimeImageWrapper = styled.div`
     width: 42px;
     height: 16px;
     background-color: var(--title-bg-orange-cl);
+    text-align: center;
   }
   & > ul {
     position: absolute;

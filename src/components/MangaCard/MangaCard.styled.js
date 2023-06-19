@@ -40,6 +40,7 @@ export const MangaImageWrapper = styled.div`
     width: 42px;
     height: 16px;
     background-color: var(--title-bg-red-cl);
+    text-align: center;
   }
   & > ul {
     display: flex;

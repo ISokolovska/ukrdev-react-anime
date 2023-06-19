@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useGetTopMangaQuery } from "../../redux/mangaSlice";
-import Loader from "../Loader/Loader";
 import MangaCard from "../MangaCard/MangaCard";
-import { MangaList, TopMangaGalleryContainer } from "./TopMangaGallery.styled";
+import { MangaList } from "./TopMangaGallery.styled";
+import Loader from "../Loader/Loader";
 
 const TopMangaGallery = () => {
   const location = useLocation();
@@ -29,22 +29,18 @@ const TopMangaGallery = () => {
     }
   }, [location.pathname]);
 
-  // if (error) {
-  //   return <>Oh no, there was an error</>;
-  // }
-
   if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <TopMangaGalleryContainer className="font-segoe-ui">
+    <div className="font-segoe-ui">
       <MangaList>
         {getTopManga.data.map((manga) => (
           <MangaCard manga={manga} key={manga.mal_id} />
         ))}
       </MangaList>
-    </TopMangaGalleryContainer>
+    </div>
   );
 };
 

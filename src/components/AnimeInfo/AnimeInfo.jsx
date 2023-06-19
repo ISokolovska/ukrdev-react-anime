@@ -9,7 +9,7 @@ const AnimeInfo = () => {
   let { mal_id } = useParams();
   const { data: getAnimeById, isLoading } = useGetAnimeByIdQuery(mal_id);
   // console.log(useGetAnimeByIdQuery(mal_id));
-  // console.log("data", data);
+  console.log("data", getAnimeById);
 
   let cn = "text-block";
   if (isActive) cn += " text-block_active";
@@ -27,11 +27,11 @@ const AnimeInfo = () => {
         </div>
         <div>
           <p>
-            <b>Authors:</b>
-            {/* {getAnimeById.data.authors.map((author) => author.name)} */}
+            <b>Authors:</b> &nbsp;
+            {getAnimeById.data.licensors.map((licensor) => licensor.name)}
           </p>
           <p>
-            <b>Genres:</b>
+            <b>Genres:</b> &nbsp;
             {getAnimeById.data.genres.map((genre) => genre.name)}
           </p>
           <p>Synopsis:</p>

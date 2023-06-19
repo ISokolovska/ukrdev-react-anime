@@ -8,7 +8,8 @@ export const InfoCard = styled.div`
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 33px;
+    height: auto;
+    padding: 5px;
     background-color: var(--title-bg-orange-cl);
   }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetTopAnimeQuery } from "../../redux/animeSlice";
 import AnimeCard from "../AnimeCard/AnimeCard";
 import Loader from "../Loader/Loader";
-import { AnimeList, TopAnimeGalleryContainer } from "./TopAnimeGallery.styled";
+import { AnimeList } from "./TopAnimeGallery.styled";
 import { useLocation } from "react-router-dom";
 
 const TopAnimeGallery = () => {
@@ -39,13 +39,13 @@ const TopAnimeGallery = () => {
   }
 
   return (
-    <TopAnimeGalleryContainer className="font-segoe-ui">
+    <div className="font-segoe-ui">
       <AnimeList>
         {getTopAnime.data.map((anime) => (
           <AnimeCard anime={anime} key={anime.mal_id} />
         ))}
       </AnimeList>
-    </TopAnimeGalleryContainer>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { Link, Outlet, useLocation, useSearchParams } from "react-router-dom";
 import {
@@ -13,6 +13,7 @@ import AnimeLogo from "../../images/logo.svg";
 import Lupe from "../../images/lupe.svg";
 import Menu from "../../images/menu.svg";
 import ModalMenu from "../ModalMenu/ModalMenu";
+import Loader from "../Loader/Loader";
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +62,9 @@ const SharedLayout = () => {
         </ButtonMenu>
         {isOpen && <ModalMenu setIsOpen={setIsOpen} />}
       </Header>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };

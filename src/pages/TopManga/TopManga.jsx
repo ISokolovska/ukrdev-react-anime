@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { useState } from "react";
 import TopMangaGallery from "../../components/TopMangaGallery/TopMangaGallery";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { useGetTopMangaQuery } from "../../redux/mangaSlice";
 import usePagination from "../../hooks/usePagination";
@@ -22,12 +22,10 @@ const TopManga = () => {
   // }, [totalCount]);
 
   return (
-    <Link to="/top/manga" state={{ from: location }}>
-      <main>
-        {/* {isLoading === true && <Loader />} */}
-        <TopMangaGallery />
-      </main>
-    </Link>
+    <main>
+      {/* {isLoading === true && <Loader />} */}
+      <TopMangaGallery />
+    </main>
   );
 };
 

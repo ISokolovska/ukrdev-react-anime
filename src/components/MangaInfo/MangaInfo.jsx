@@ -31,11 +31,11 @@ const MangaInfo = () => {
         </div>
         <div>
           <p>
-            <b>Authors:</b>
+            <b>Authors:</b> &nbsp;
             {getMangaById.data.authors.map((author) => author.name)}
           </p>
           <p>
-            <b>Genres:</b>
+            <b>Genres:</b> &nbsp;
             {getMangaById.data.genres.map((genre) => genre.name)}
           </p>
           <p>Synopsis:</p>
