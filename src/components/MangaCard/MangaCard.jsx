@@ -8,6 +8,7 @@ import { MangaImage, MangaImageWrapper, MangaItem } from "./MangaCard.styled";
 
 const MangaCard = ({ manga: { title, images, score, favorites, mal_id } }) => {
   const location = useLocation();
+  // console.log(manga.title);
   return (
     <MangaItem className="font-segoe-ui">
       <Link as={NavLink} to={`/manga/${mal_id}`} state={{ from: location }}>

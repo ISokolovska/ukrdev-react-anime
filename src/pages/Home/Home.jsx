@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { useGetMangaSearchQuery } from "../../redux/mangaSlice";
 import TopMangaGallery from "../../components/TopMangaGallery/TopMangaGallery";
 import TopAnimeGallery from "../../components/TopAnimeGallery/TopAnimeGallery";
@@ -14,6 +14,9 @@ import { useGetAnimeSearchQuery } from "../../redux/animeSlice";
 const Home = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(4);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
+
   const {
     data: getMangaSearch,
     // error,
@@ -21,8 +24,10 @@ const Home = () => {
   } = useGetMangaSearchQuery({
     page,
     limit: perPage,
-    // filter,
+    search,
   });
+
+  // console.log(getMangaSearch.data);
 
   const {
     data: getAnimeSearch,
@@ -31,16 +36,16 @@ const Home = () => {
   } = useGetAnimeSearchQuery({
     page,
     limit: perPage,
-    // filter,
+    // search,
   });
 
-  const params = useLocation();
-  let search = params.search.split("=").at(-1);
+  // const params = useLocation();
+  // let search = params.search.split("=").at(-1);
 
   const location = useLocation().pathname.split("/");
   const backLinkHref1 = location.state?.from ?? "/top/manga";
   const backLinkHref2 = location.state?.from ?? "/top/anime";
-  const backLinkHref3 = location.state?.from ?? "/search";
+  // const backLinkHref3 = location.state?.from ?? "/search";
 
   // if (error) {
   //   return <>Oh no, there was an error</>;
@@ -98,19 +103,20 @@ const Home = () => {
 
       {search && (
         <>
-          getMangaSearch?.data?.length ?
-          <MangaSearch /> :
-          <p style={{ color: "red" }}>Нажаль ми нічого не знайшли </p>
-          && getAnimeSearch?.data?.length? ? <AnimeSearch />:
-          <p style={{ color: "red" }}>Нажаль ми нічого не знайшли </p>
+          <MangaSearch />
+          <AnimeSearch />
         </>
       )}
+      {/* {getMangaSearch?.data?.length ? (
+        <>
+          <MangaSearch />
+          <AnimeSearch />
+        </>
+      ) : (
+        <p style={{ color: "red" }}>Нажаль ми нічого не знайшли </p>
+      )} */}
     </HomeContainer>
   );
 };
 
 export default Home;
-
-// : data.data.length === 0 ? (
-//         <p>Нажаль ми нічого не знайшли !</p>
-//       )

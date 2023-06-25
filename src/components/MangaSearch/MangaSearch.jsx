@@ -31,6 +31,7 @@ const MangaSearch = () => {
   // console.log("data", data);
   return (
     <div className="font-segoe-ui">
+      {/* getMangaSearch?.data ? */}
       <MangaList>
         {getMangaSearch.data.map((manga) => (
           <MangaCard manga={manga} key={manga.mal_id} />

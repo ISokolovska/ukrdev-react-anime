@@ -23,7 +23,12 @@ const MangaInfo = () => {
   }
 
   return (
-    <InfoCard className="font-segoe-ui">
+    <InfoCard
+      className="font-segoe-ui"
+      onClick={(e) => {
+        e.preventDefault();
+      }}
+    >
       <>
         <img src={getMangaById.data.images.jpg.image_url} alt="manga" />
         <div className="manga-info__title">
@@ -38,7 +43,9 @@ const MangaInfo = () => {
             <b>Genres:</b> &nbsp;
             {getMangaById.data.genres.map((genre) => genre.name)}
           </p>
-          <p>Synopsis:</p>
+          <p>
+            <b>Synopsis:</b>
+          </p>
         </div>
         <TextBlock>
           <InfoText className={cn}>{getMangaById.data.synopsis}</InfoText>
